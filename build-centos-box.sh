@@ -54,10 +54,6 @@ chroot ${ROOTFS} chown -R vagrant:vagrant /home/vagrant/.ssh
 # Allow sudo without a tty
 sed -i -e 's/Defaults.*requiretty/#&/' ${ROOTFS}/etc/sudoers
 
-# Install Puppet
-yum --installroot=$ROOTFS --nogpgcheck -y install http://yum.puppetlabs.com/el/6/products/i386/puppetlabs-release-6-7.noarch.rpm
-yum --installroot=$ROOTFS --nogpgcheck -y install puppet
-
 # disable loginuid.so
 sed -i '/session\(.*loginuid.so\)$/d' ${ROOTFS}/etc/pam.d/*
 
